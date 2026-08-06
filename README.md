@@ -11,6 +11,11 @@
 > toolchain *is* still required), build commands, troubleshooting, and an
 > inventory of every non-text file in `vendor/`.
 >
+> Handing the build to a coding agent? Give it
+> **[AGENT-GUIDE.md](AGENT-GUIDE.md)** (на русском) — the same procedure written
+> as instructions to follow, with explicit stop conditions and a
+> do-not-touch list.
+>
 > Base: upstream `main` @ `77817f9`, v0.5.0. For anything other than an offline
 > build, use the upstream repository — this fork does not track it.
 
