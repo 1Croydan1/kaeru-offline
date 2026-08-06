@@ -1,4 +1,20 @@
-# 蛙 kaeru
+# 蛙 kaeru — offline-buildable fork
+
+> **This is a vendored fork of [LamantinAI/kaeru](https://github.com/LamantinAI/kaeru), for machines with no access to crates.io.**
+>
+> Every dependency is committed under `vendor/`, so `cargo build` works with the
+> network fully off. Crate sources are unmodified and no versions were changed —
+> the only additions are `vendor/`, `.cargo/config.toml`, `.gitattributes` and
+> the build guide.
+>
+> **Start here: [OFFLINE-BUILD.md](OFFLINE-BUILD.md)** — prerequisites (a C/C++
+> toolchain *is* still required), build commands, troubleshooting, and an
+> inventory of every non-text file in `vendor/`.
+>
+> Base: upstream `main` @ `77817f9`, v0.5.0. For anything other than an offline
+> build, use the upstream repository — this fork does not track it.
+
+---
 
 `kaeru` is a **cross-agent cognitive engine** for LLM agents — a typed graph that agents think in, plus a recollection layer for long-term ideas and outcomes. Local-first for each agent, with an optional shared cloud tier so a whole team of agents and people build on one another's memory.
 
