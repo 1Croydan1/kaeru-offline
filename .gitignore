@@ -6,3 +6,11 @@
 .idea/
 .vscode/
 .intentionally-empty-file.*
+
+# The vendored tree is verified byte-for-byte against the SHA-256 digests in
+# each crate's `.cargo-checksum.json`, so nothing inside it may be ignored.
+# Without this, the unanchored patterns above (`.vscode/`, `.idea/`, `*.swp`,
+# `.DS_Store`) silently drop files that upstream crates ship — e.g.
+# `vendor/cxx-1.0.194/.vscode/` — and every build then fails with
+# "failed to open file ... No such file or directory".
+!vendor/**
