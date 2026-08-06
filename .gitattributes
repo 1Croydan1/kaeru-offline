@@ -1,0 +1,8 @@
+# The vendored tree is verified byte-for-byte against the SHA-256 digests in
+# each crate's `.cargo-checksum.json`. Any end-of-line translation on checkout
+# — which git does by default on Windows when `core.autocrlf=true` — rewrites
+# those bytes and every build then dies with "checksum mismatch".
+#
+# `-text` disables EOL translation for the whole repo, so a Windows checkout is
+# byte-identical to a Linux one.
+* -text

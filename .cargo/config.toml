@@ -1,0 +1,31 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Offline build configuration (kaeru-offline fork).
+#
+# Every crate in the dependency graph — crates.io registry deps AND the one
+# git-patched dep (`graph_builder`) — is committed under `vendor/`. Cargo is
+# pointed at that directory instead of the network, so `cargo build` works on a
+# machine that has never seen crates.io.
+#
+# This file lives at `<repo>/.cargo/config.toml`; the `directory` path below is
+# relative to the repo root, so the checkout can sit anywhere on disk.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[source.crates-io]
+replace-with = "vendored-sources"
+
+# `Cargo.toml` carries `[patch.crates-io] graph_builder = { git = ... }`.
+# A patched git source needs its own replacement entry, otherwise cargo still
+# tries to reach github.com to resolve the rev.
+[source."git+https://github.com/lawless-m/graph?rev=790ef623533fa39574ddd11308e3abc3993c0994"]
+git = "https://github.com/lawless-m/graph"
+rev = "790ef623533fa39574ddd11308e3abc3993c0994"
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
+
+# Hard guarantee, not just a default: cargo refuses to touch the network at all.
+# If a build ever needs a crate that is missing from `vendor/`, it fails with a
+# clear "no matching package" instead of hanging on a blocked proxy.
+[net]
+offline = true
